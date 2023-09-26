@@ -1,5 +1,5 @@
 <script>
-    import { extractSlug, prettyURL } from "$lib/URLExtract";
+    import { prettyURL } from "$lib/URLExtract";
 
     export let cardImg = "";
     export let articleLink = "";
@@ -9,15 +9,23 @@
 
 <div class="flex border-b border-black p-5 space-x-4">
     <!-- svelte-ignore a11y-img-redundant-alt -->
-    <img
-        src={cardImg ?? "../assets/newspaper.png"}
-        alt="News article image"
-        class={`aspect-square rounded h-fit ${cardImg ?? "h-20 w-20"}`}
-    />
+    {#if cardImg}
+        <img
+            src={cardImg}
+            alt="News article image"
+            class="aspect-square rounded h-fit"
+        />
+    {:else}
+        <span>
+            <div class="h-20 w-20 rounded bg-gray-200 flex justify-center items-center text-gray-400 font-semibold">
+                NEWS
+            </div>
+        </span>
+    {/if}
 
     <div class="flex flex-col">
         <a
-            href="./fullnews/{prettyURL(articleLink)}"
+            href="/fullnews/{prettyURL(articleLink)}"
             class="hover:underline text-xl font-semibold line-clamp-3"
             >{cardHeading}</a
         >

@@ -14,11 +14,17 @@ export const extractSlug = (/** @type {string} */ url) => {
 export const prettyURL = (/** @type {string} */ url) => {
     const parts = url.split('/');
 
-    const mergedString = parts.slice(3).join('/');
+    const mergedString = parts.slice(3).join('_|_');
     if (parts.length > 1) {
         // const modifiedUrl = parts[1];
         return mergedString;
     } else {
         return '';
     }
+}
+
+export const getURL = (/** @type {string} */ url) => {
+    const parts = url.split('_|_');
+    const mergedString = parts.join('/');
+    return `https://www.thehindu.com/${mergedString}`;
 }
