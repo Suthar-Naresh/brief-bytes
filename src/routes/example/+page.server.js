@@ -1,32 +1,32 @@
-// // /** @type {import('@sveltejs/kit').Load} */
+// // // /** @type {import('@sveltejs/kit').Load} */
 
-import * as cheerio from 'cheerio';
+// import * as cheerio from 'cheerio';
 
-export const load = async () => {
-    // const url = `https://www.thehindu.com/news/national/two-let-terrorists-encircled-by-jk-police-in-anantnag/article67306002.ece`;
-    const url = `https://www.thehindu.com/sport/`;
+// export const load = async () => {
+//     // const url = `https://www.thehindu.com/news/national/two-let-terrorists-encircled-by-jk-police-in-anantnag/article67306002.ece`;
+//     const url = `https://www.thehindu.com/sport/`;
 
-    const res = await fetch(url);
-    const data = await res.text();
+//     const res = await fetch(url);
+//     const data = await res.text();
 
-    const $ = cheerio.load(data);
+//     const $ = cheerio.load(data);
 
-    /**
-     * @type {(string | undefined)[]}
-     */
+//     /**
+//      * @type {(string | undefined)[]}
+//      */
     
-    let arr = [];
+//     let arr = [];
 
-    $('.element').each((index, el) => {
-        // console.log($(el).find('.title > a').attr('href'));
-        arr.push($(el).find('.title > a').text());
+//     $('.element').each((index, el) => {
+//         // console.log($(el).find('.title > a').attr('href'));
+//         arr.push($(el).find('.title > a').text());
 
-    });
+//     });
 
 
-    // const news = $('.articlebodycontent > p').text();
+//     // const news = $('.articlebodycontent > p').text();
 
-    return{
-        news:arr
-    }
-}
+//     return{
+//         news:arr
+//     }
+// }

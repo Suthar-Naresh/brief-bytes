@@ -1,4 +1,6 @@
 <script>
+    import { extractSlug, prettyURL } from "$lib/URLExtract";
+
     export let cardImg = "";
     export let articleLink = "";
     export let altText = "";
@@ -15,7 +17,7 @@
 
     <div class="flex flex-col">
         <a
-            href="./fullnews/${articleLink}"
+            href="./fullnews/{prettyURL(articleLink)}"
             class="hover:underline text-xl font-semibold line-clamp-3"
             >{cardHeading}</a
         >

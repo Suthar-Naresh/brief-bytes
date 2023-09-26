@@ -13,7 +13,7 @@
             >
 
             <div class="flex flex-col">
-                <a href='./fullnews/${n.url}' class="hover:underline text-xl font-semibold line-clamp-3">{n.text}</a>
+                <a href='./fullnews/{n.url}' class="hover:underline text-xl font-semibold line-clamp-3">{n.text}</a>
                 <p class="text-xs line-clamp-2 text-gray-400">{n.alt??''}</p>
             </div>
         </div>
