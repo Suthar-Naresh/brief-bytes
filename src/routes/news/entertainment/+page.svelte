@@ -1,5 +1,5 @@
 <script>
-    import NewsCard from "../../components/NewsCard.svelte";
+    import NewsCard from '../../../components/NewsCard.svelte';
 
     export let data;
 </script>

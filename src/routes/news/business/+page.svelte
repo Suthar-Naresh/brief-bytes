@@ -1,7 +1,7 @@
 <script>
-    import NewsCard from "../../components/NewsCard.svelte";
+    import NewsCard from "../../../components/NewsCard.svelte";
 
-    export let data;
+     export let data
 </script>
 
 <div class="grid grid-cols-2 gap-x-5 p-3">
