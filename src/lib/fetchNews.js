@@ -2,16 +2,13 @@
 
 import * as cheerio from 'cheerio';
 
-export const load = async () => {
-
-    const url = `https://www.thehindu.com/news/`;
+export const fetchNews = async (/** @type {RequestInfo | URL} */ url) => {
 
     const res = await fetch(url);
     const data = await res.text();
 
     const $ = cheerio.load(data);
-    
-    
+
     
     /**
      * @type {{ text: string; url: string | undefined; img: string | undefined; alt: string | undefined; }[]}
@@ -22,8 +19,6 @@ export const load = async () => {
         const aTag = $(el).find('.title > a');
         const pic = $(el).find('.picture > img');
 
-        // console.log(aTag.text(),'--->',pic.attr('data-original'));
-
         arr.push({
             text:aTag.text(),
             url:aTag.attr('href'),
@@ -32,10 +27,6 @@ export const load = async () => {
         });
     });
 
+    return arr;
 
-    // const news = $('.articlebodycontent > p').text();
-
-    return{
-        news:arr
-    }
 }
