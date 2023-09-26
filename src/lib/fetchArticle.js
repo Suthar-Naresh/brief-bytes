@@ -21,7 +21,10 @@ export const fetchArticle = async (/** @type {RequestInfo | URL} */ url) => {
 
     $('.articlebodycontent > p:not([class])').each((index, element) => {
         // console.log($(element).text());
-        parr.push($(element).text());
+        if ($(element).find('b > a').length === 0 && $(element).find('i > a').length === 0) {
+            // console.log($(element).text());
+            parr.push($(element).text());
+          }
       });
       
     return {
