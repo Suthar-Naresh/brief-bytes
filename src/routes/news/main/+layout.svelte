@@ -44,11 +44,11 @@
             {/each}
         </ul>
         <div class="flex items-center space-x-3">
-            <p class="uppercase text-gray-900">welcome</p><span>{data.user.username}</span>
+            <p class="uppercase text-black">welcome</p><span>{data.user.username}</span>
             <form action="/logout" method="post">
                 <button
                     type="submit"
-                    class="text-white bg-blue-100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                    class="text-white bg-red-700 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-blue-800 inline-flex items-center"
                     >Logout</button
                 >
             </form>

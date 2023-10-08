@@ -1,17 +1,17 @@
 <script>
     const navLinks = [
-        { title: "top headlines", urlPath: "/news" },
-        { title: "business", urlPath: "/news/business" },
-        { title: "technology", urlPath: "/news/technology" },
-        { title: "sports", urlPath: "/news/sports" },
-        { title: "entertainment", urlPath: "/news/entertainment" },
+        { title: "top headlines", urlPath: "/news/main" },
+        { title: "business", urlPath: "/news/main/business" },
+        { title: "technology", urlPath: "/news/main/technology" },
+        { title: "sports", urlPath: "/news/main/sports" },
+        { title: "entertainment", urlPath: "/news/main/entertainment" },
     ];
 </script>
 <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800">
     <div class="mx-auto max-w-screen-xl">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
-                <a href="/news" class="flex items-center">
+                <a href="/news/main" class="flex items-center">
                     <span
                         class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
                         >BRIEF BYTES</span
