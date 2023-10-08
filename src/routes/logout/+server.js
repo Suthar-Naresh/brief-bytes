@@ -2,8 +2,7 @@ import { redirect } from "@sveltejs/kit";
 
 export const POST = ({ locals }) => {
     locals.pb.authStore.clear();
-    // @ts-ignore
-    locals.user = undefined;
+    locals.user = null;
 
     throw redirect(303, '/');
 }
