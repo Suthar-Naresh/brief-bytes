@@ -24,6 +24,7 @@
   "type": "module",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
+    "node-summarizer": "^1.0.7",
     "pocketbase": "^0.17.3"
   }
 }

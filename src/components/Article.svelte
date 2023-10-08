@@ -2,27 +2,33 @@
     import Footer from "./Footer.svelte";
 
     /**
-     * @type {{ article: { url: string; title: string; subTitle: string; pubDate: string; image: string | undefined; author: string; parr: string[] }; }}
+     * @type {{ summary: string; article: { title: any; subTitle: any; pubDate: any; image: any; author: any; parr: any; url: any; }; }}
      */
     export let data;
     let buttonState = "idle";
     let summarizedArticle = "";
+    let btnVal = "Summarize";
 
     function summarize() {
         buttonState = "summarizing";
+        btnVal = "Summarizing";
 
         // summarizedArticle = await mlModel(data.article.parr.join('') as complete string);
         // buttonState = "summarized";
 
         setTimeout(() => {
             buttonState = "summarized";
-            summarizedArticle =
-                "EU industry chief Thierry Breton has urged Apple CEO Tim Cook to open Apple's ecosystem to competitors under the Digital Markets Act. Breton's request comes after theirmeeting in Brussels. He emphasized the need for iPhone users to access competitive services like electronic wallets,  browsers, and app stores. Apple has not responded. The Act aims to boost competition, and Breton challenged Apple's security and privacy arguments, stating that EU regulation can foster innovation while ensuring security and privacy.";
-        }, 3000);
+            btnVal = "Summarized";
 
+            summarizedArticle = data.summary;
+            // summarizedArticle =
+            //     "EU industry chief Thierry Breton has urged Apple CEO Tim Cook to open Apple's ecosystem to competitors under the Digital Markets Act. Breton's request comes after theirmeeting in Brussels. He emphasized the need for iPhone users to access competitive services like electronic wallets,  browsers, and app stores. Apple has not responded. The Act aims to boost competition, and Breton challenged Apple's security and privacy arguments, stating that EU regulation can foster innovation while ensuring security and privacy.";
+        }, 2000);
     }
 </script>
 
+<!-- svelte-ignore non-top-level-reactive-declaration -->
+<!-- svelte-ignore non-top-level-reactive-declaration -->
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-col">
         <div class="lg:w-4/6 mx-auto">
@@ -66,9 +72,7 @@
                 />
             </div>
 
-            <div
-                class="text-center sm:pr-8 sm:py-8 flex space-x-3"
-            >
+            <div class="text-center sm:pr-8 sm:py-8 flex space-x-3">
                 <div
                     class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400"
                 >
@@ -97,7 +101,8 @@
                 </div>
             </div>
             <div
-                class="{(buttonState === 'idle' || buttonState === 'summarizing') &&
+                class="{(buttonState === 'idle' ||
+                    buttonState === 'summarizing') &&
                     'hidden'} border-dotted border-blue-400 border-2 p-2 rounded text-justify mb-4"
             >
                 {summarizedArticle}
@@ -138,8 +143,7 @@
                             />
                         </svg>
                     {/if}
-
-                    Summarize
+                    {btnVal}
                 </button>
             </div>
 
@@ -173,5 +177,4 @@
     </div>
 </section>
 
-<!-- Footer -->
 <Footer />

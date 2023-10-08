@@ -12,8 +12,9 @@ export const fetchArticle = async (/** @type {RequestInfo | URL} */ url) => {
     const title = $('h1.title').text();
     const subTitle = $('h3.sub-title').text();
     const pubDate = $('p.publish-time').text();
-    const author = $('.author-name').text();
+    const author = $('.author-name:first').text();
     const image = $('picture > source[sizes="320px"]').attr('srcset');
+    
     /**
      * @type {string[]}
      */
@@ -21,7 +22,7 @@ export const fetchArticle = async (/** @type {RequestInfo | URL} */ url) => {
 
     $('.articlebodycontent > p:not([class])').each((index, element) => {
         // console.log($(element).text());
-        if ($(element).find('b > a').length === 0 && $(element).find('i > a').length === 0) {
+        if ($(element).find('b > a').length === 0 && $(element).find('i > a').length === 0 && $(element).find('a').length === 0) {
             // console.log($(element).text());
             parr.push($(element).text());
           }

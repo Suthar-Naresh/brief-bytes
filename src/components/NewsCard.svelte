@@ -25,7 +25,7 @@
 
     <div class="flex flex-col">
         <a
-            href="/fullnews/{prettyURL(articleLink)}"
+            href="/news/fullnews/{prettyURL(articleLink)}"
             class="hover:underline text-xl font-semibold line-clamp-3"
             >{cardHeading}</a
         >

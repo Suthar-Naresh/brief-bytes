@@ -1,12 +1,12 @@
 <script>
+    import { navigating, page } from "$app/stores";
     import ScaletonArticle from "../../components/ScaletonArticle.svelte";
-import ScaletonCard from "../../components/ScaletonCard.svelte";
 
+    export let data;
 </script>
-<!-- <div class="grid grid-cols-2 gap-x-5 p-3">
-    {#each Array(8) as _}
-        <ScaletonCard />
-    {/each}
-</div> -->
 
-<ScaletonArticle />
+{#if $navigating}
+    <ScaletonArticle />
+{/if}
+<a href="/">HOME</a><br />
+<h1>{data.data}</h1>
