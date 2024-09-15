@@ -5,7 +5,7 @@
 Brief Bytes Login Page
 <br><br>
 
-<img src="![image](https://github.com/user-attachments/assets/2e36fbc1-0678-4e23-ae43-5a6f469b00dd)" alt="main page" />
+<img src="https://github.com/user-attachments/assets/2e36fbc1-0678-4e23-ae43-5a6f469b00dd" alt="main page" />
 <br>
 <br>
 Home Page
