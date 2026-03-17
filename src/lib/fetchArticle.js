@@ -10,20 +10,30 @@ export const fetchArticle = async (url) => {
         const data = await res.text();
         const $ = cheerio.load(data);
 
-        const title = $('h1.title').text();
-        const subTitle = $('h3.sub-title').text();
-        const pubDate = $('p.publish-time').text();
-        const author = $('.author-name:first').text();
-        const image = $('picture > source[sizes="320px"]').attr('srcset');
+        const title = $('h1.title').text().trim();
+        const subTitle = $('h2.sub-title').text().trim() || $('h3.sub-title').text().trim();
+        const pubDate = $('.publish-time').first().text().trim() || $('.updated-date').first().text().trim();
+        const author = $('.author-name:first').text().trim();
+        const image = $('picture > source[sizes="320px"]').attr('srcset') || $('picture > source').first().attr('srcset');
 
         /** @type {string[]} */
         let parr = [];
 
-        $('.articlebodycontent > p:not([class])').each((index, element) => {
-            if ($(element).find('b > a').length === 0 && $(element).find('i > a').length === 0 && $(element).find('a').length === 0) {
-                parr.push($(element).text());
+        $('.schemaDiv > p').each((index, element) => {
+            const text = $(element).text().trim();
+            if (text.length > 20) {
+                parr.push(text);
             }
         });
+
+        if (parr.length === 0) {
+            $('.articlebodycontent > p:not([class])').each((index, element) => {
+                const text = $(element).text().trim();
+                if (text.length > 20) {
+                    parr.push(text);
+                }
+            });
+        }
 
         return { url, title, subTitle, pubDate, author, image, parr };
     }, 60 * 60 * 1000);
