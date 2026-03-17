@@ -1,9 +1,9 @@
 <script>
     import { navigating, page } from "$app/stores";
     import Footer from "../../../components/Footer.svelte";
-    import ScaletonCard from "../../../components/ScaletonCard.svelte";
+    import SkeletonCard from "../../../components/SkeletonCard.svelte";
 
-    const params = new URLSearchParams($page.url.search);
+    let { data, children } = $props();
 
     const navLinks = [
         { title: "top headlines", urlPath: "/news/main" },
@@ -14,17 +14,23 @@
     ];
 
     const active =
-        "inline-block p-4 border-b-2 border-transparent rounded-t-lg uppercase text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500";
+        "inline-block p-4 border-b-2 rounded-t-lg uppercase text-blue-600 border-blue-600 active dark:text-blue-500 dark:border-blue-500";
     const nonactive =
         "inline-block p-4 border-b-2 border-transparent rounded-t-lg uppercase hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300";
-
-    export let data;
 </script>
 
+<svelte:head>
+    <title>Brief Bytes - News Summarized</title>
+    <meta name="description" content="Short on time? Get concise, AI-powered news summaries from top headlines, business, technology, sports, and entertainment." />
+    <meta property="og:title" content="Brief Bytes - News Summarized" />
+    <meta property="og:description" content="Short on time? Get concise news summaries powered by machine learning." />
+    <meta property="og:type" content="website" />
+</svelte:head>
+
 <div
-    class=" text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700"
+    class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 sticky top-0 bg-white z-10"
 >
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
         <ul class="flex flex-wrap -mb-px">
             <li class="mr-2">
                 <span
@@ -44,11 +50,12 @@
             {/each}
         </ul>
         <div class="flex items-center space-x-3">
-            <p class="uppercase text-black">welcome</p><span>{data.user.username}</span>
+            <p class="uppercase text-black text-xs">welcome,</p>
+            <span class="font-medium text-gray-800">{data.user.username}</span>
             <form action="/logout" method="post">
                 <button
                     type="submit"
-                    class="text-white bg-red-700 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-800 inline-flex items-center"
+                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-colors"
                     >Logout</button
                 >
             </form>
@@ -57,18 +64,15 @@
 </div>
 
 {#if $navigating && $page.url.pathname.startsWith("/news/")}
-    Loading....
-    <!-- {console.log("From:", $page.url.pathname)} -->
-
-    <div class="grid grid-cols-2 gap-x-5 p-3">
+    <div class="grid grid-cols-2 gap-x-5 p-3 max-w-7xl mx-auto">
         {#each Array(8) as _}
-            <ScaletonCard />
+            <SkeletonCard />
         {/each}
     </div>
 {:else}
-    <!-- {$page} -->
-    <slot />
+    <div class="max-w-7xl mx-auto">
+        {@render children()}
+    </div>
 {/if}
 
-<!-- FOOTER -->
 <Footer />

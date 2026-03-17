@@ -1,8 +1,11 @@
-// // /** @type {import('@sveltejs/kit').Load} */
-
-import { fetchNews } from "$lib/fetchNews"
+import { fetchNews } from "$lib/fetchNews";
+import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    let news = fetchNews('https://www.thehindu.com/business/');
-    return { news }
-}
+    try {
+        const news = await fetchNews('https://www.thehindu.com/business/');
+        return { news };
+    } catch (e) {
+        error(503, 'Unable to fetch business news. Please try again later.');
+    }
+};

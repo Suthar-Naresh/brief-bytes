@@ -1,7 +1,6 @@
 <script>
     import NewsCard from '../../../../components/NewsCard.svelte';
-
-    export let data;
+    let { data } = $props();
 </script>
 
 <div class="grid grid-cols-2 gap-x-5 p-3">

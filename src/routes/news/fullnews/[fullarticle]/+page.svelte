@@ -1,6 +1,6 @@
 <script>
-  import Article from "../../../../components/Article.svelte";
-  export let data;
+    import Article from "../../../../components/Article.svelte";
+    let { data } = $props();
 </script>
 
 <Article {data} />

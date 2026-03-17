@@ -1,18 +1,14 @@
 <script>
     import { prettyURL } from "$lib/URLExtract";
 
-    export let cardImg = "";
-    export let articleLink = "";
-    export let altText = "";
-    export let cardHeading = "";
+    let { cardImg = "", articleLink = "", altText = "", cardHeading = "" } = $props();
 </script>
 
 <div class="flex border-b border-black p-5 space-x-4">
-    <!-- svelte-ignore a11y-img-redundant-alt -->
     {#if cardImg}
         <img
             src={cardImg}
-            alt="News article image"
+            alt={altText || cardHeading}
             class="aspect-square rounded h-fit"
         />
     {:else}

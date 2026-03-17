@@ -1,32 +1,31 @@
-// // /** @type {import('@sveltejs/kit').Load} */
-
 import * as cheerio from 'cheerio';
+import { cached } from './cache.js';
 
-export const fetchNews = async (/** @type {RequestInfo | URL} */ url) => {
+/**
+ * @param {string} url
+ * @returns {Promise<Array<{text: string, url: string|undefined, img: string|undefined, alt: string|undefined}>>}
+ */
+export const fetchNews = async (url) => {
+    return cached(`news:${url}`, async () => {
+        const res = await fetch(url);
+        const data = await res.text();
+        const $ = cheerio.load(data);
 
-    const res = await fetch(url);
-    const data = await res.text();
+        /** @type {{ text: string; url: string | undefined; img: string | undefined; alt: string | undefined; }[]} */
+        let arr = [];
 
-    const $ = cheerio.load(data);
+        $('.element').each((index, el) => {
+            const aTag = $(el).find('.title > a');
+            const pic = $(el).find('.picture > img');
 
-    
-    /**
-     * @type {{ text: string; url: string | undefined; img: string | undefined; alt: string | undefined; }[]}
-     */
-    let arr = [];
-
-    $('.element').each((index, el) => {
-        const aTag = $(el).find('.title > a');
-        const pic = $(el).find('.picture > img');
-
-        arr.push({
-            text:aTag.text(),
-            url:aTag.attr('href'),
-            img:pic.attr('data-original')??undefined,
-            alt:pic.attr('alt')??undefined,
+            arr.push({
+                text: aTag.text(),
+                url: aTag.attr('href'),
+                img: pic.attr('data-original') ?? undefined,
+                alt: pic.attr('alt') ?? undefined,
+            });
         });
-    });
 
-    return arr;
-
-}
+        return arr;
+    }, 5 * 60 * 1000);
+};

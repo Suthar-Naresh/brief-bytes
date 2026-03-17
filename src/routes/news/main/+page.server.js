@@ -1,34 +1,11 @@
-// // /** @type {import('@sveltejs/kit').Load} */
-
-import * as cheerio from 'cheerio';
+import { fetchNews } from "$lib/fetchNews";
+import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-
-    const url = `https://www.thehindu.com/news/`;
-
-    const res = await fetch(url);
-    const data = await res.text();
-
-    const $ = cheerio.load(data);
-    
-    /**
-     * @type {{ text: string; url: string | undefined; img: string | undefined; alt: string | undefined; }[]}
-     */
-    let arr = [];
-
-    $('.element').each((index, el) => {
-        const aTag = $(el).find('.title > a');
-        const pic = $(el).find('.picture > img');
-
-        arr.push({
-            text:aTag.text(),
-            url:aTag.attr('href'),
-            img:pic.attr('data-original')??undefined,
-            alt:pic.attr('alt')??undefined,
-        });
-    });
-
-    return{
-        news:arr
+    try {
+        const news = await fetchNews('https://www.thehindu.com/news/');
+        return { news };
+    } catch (e) {
+        error(503, 'Unable to fetch news. Please try again later.');
     }
-}
+};

@@ -1,39 +1,28 @@
 <script>
     import Footer from "./Footer.svelte";
 
-    /**
-     * @type {{ summary: string; article: { title: any; subTitle: any; pubDate: any; image: any; author: any; parr: any; url: any; }; }}
-     */
-    export let data;
-    let buttonState = "idle";
-    let summarizedArticle = "";
-    let btnVal = "Summarize";
+    let { data } = $props();
+    let buttonState = $state("idle");
+    let summarizedArticle = $state("");
+    let btnVal = $state("Summarize");
 
     function summarize() {
         buttonState = "summarizing";
         btnVal = "Summarizing";
 
-        // summarizedArticle = await mlModel(data.article.parr.join('') as complete string);
-        // buttonState = "summarized";
-
         setTimeout(() => {
             buttonState = "summarized";
             btnVal = "Summarized";
-
             summarizedArticle = data.summary;
-            // summarizedArticle =
-            //     "EU industry chief Thierry Breton has urged Apple CEO Tim Cook to open Apple's ecosystem to competitors under the Digital Markets Act. Breton's request comes after theirmeeting in Brussels. He emphasized the need for iPhone users to access competitive services like electronic wallets,  browsers, and app stores. Apple has not responded. The Act aims to boost competition, and Breton challenged Apple's security and privacy arguments, stating that EU regulation can foster innovation while ensuring security and privacy.";
-        }, 2000);
+        }, 1500);
     }
 </script>
 
-<!-- svelte-ignore non-top-level-reactive-declaration -->
-<!-- svelte-ignore non-top-level-reactive-declaration -->
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-col">
         <div class="lg:w-4/6 mx-auto">
             <button
-                on:click={() => history.back()}
+                onclick={() => history.back()}
                 type="button"
                 class="text-indigo-500 inline-flex items-center border border-indigo-500 px-3 py-2 rounded"
             >
@@ -97,7 +86,7 @@
                     >
                         {data.article.author}
                     </h2>
-                    <div class="w-full h-1 bg-indigo-500 rounded mt-2 mb-4" />
+                    <div class="w-full h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                 </div>
             </div>
             <div
@@ -119,10 +108,10 @@
                 <button
                     disabled={buttonState === "summarizing" ||
                         buttonState === "summarized"}
-                    on:click={() => summarize()}
+                    onclick={() => summarize()}
                     type="button"
                     class="{buttonState === 'summarized' &&
-                        'opacity-50 cursor-not-allowed'} text-white bg-blue-100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                        'opacity-50 cursor-not-allowed'} text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
                 >
                     {#if buttonState === "summarizing"}
                         <svg
@@ -148,7 +137,6 @@
             </div>
 
             <div class="mt-5 flex flex-col">
-                <!-- for each para render p tag  -->
                 {#each data.article.parr as p}
                     <p class="leading-relaxed text-base mb-4">
                         {p}

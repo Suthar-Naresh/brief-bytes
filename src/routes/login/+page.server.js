@@ -1,10 +1,10 @@
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 
 export const load = ({ locals }) => {
     if (locals.pb.authStore.isValid) {
-        throw redirect(303, '/news/main');
+        redirect(303, '/news/main');
     }
-}
+};
 
 export const actions = {
     default: async ({ locals, request }) => {
@@ -14,9 +14,9 @@ export const actions = {
         try {
             await locals.pb.collection('newsUsers').authWithPassword(email.toString(), password.toString());
         } catch (error) {
-            console.log('ERRORRRRRRRRRRRRRRRR....\n', error);
+            return fail(401, { error: 'Invalid email or password.' });
         }
 
-        throw redirect(303, '/news/main');
+        redirect(303, '/news/main');
     }
-}
+};
