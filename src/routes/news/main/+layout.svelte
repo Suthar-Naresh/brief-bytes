@@ -3,7 +3,7 @@
     import Footer from "../../../components/Footer.svelte";
     import SkeletonCard from "../../../components/SkeletonCard.svelte";
 
-    let { data, children } = $props();
+    let { children } = $props();
 
     const navLinks = [
         { title: "top headlines", urlPath: "/news/main" },
@@ -33,9 +33,9 @@
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
         <ul class="flex flex-wrap -mb-px">
             <li class="mr-2">
-                <span
+                <a href="/"
                     class="inline-block p-4 border-b-2 border-transparent rounded-t-lg font-semibold text-gray-900 tracking-wider uppercase"
-                    >Brief Bytes</span
+                    >Brief Bytes</a
                 >
             </li>
             {#each navLinks as nl}
@@ -49,17 +49,6 @@
                 </li>
             {/each}
         </ul>
-        <div class="flex items-center space-x-3">
-            <p class="uppercase text-black text-xs">welcome,</p>
-            <span class="font-medium text-gray-800">{data.user.username}</span>
-            <form action="/logout" method="post">
-                <button
-                    type="submit"
-                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-colors"
-                    >Logout</button
-                >
-            </form>
-        </div>
     </div>
 </div>
 

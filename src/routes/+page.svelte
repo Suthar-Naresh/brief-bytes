@@ -31,15 +31,10 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/login"
+            <a href="/news/main"
                 class="px-8 py-3.5 text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40"
             >
-                Log In
-            </a>
-            <a href="/register"
-                class="px-8 py-3.5 text-lg font-semibold text-indigo-300 bg-white/5 hover:bg-white/10 border border-indigo-500/30 rounded-xl transition-all duration-200"
-            >
-                Create Account
+                Browse News
             </a>
         </div>
 

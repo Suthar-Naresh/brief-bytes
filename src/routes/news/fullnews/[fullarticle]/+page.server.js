@@ -1,13 +1,9 @@
 import { getURL } from '$lib/URLExtract.js';
 import { fetchArticle } from '$lib/fetchArticle.js';
 import { summarize } from '$lib/model.js';
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 
-export const load = async ({ params, locals }) => {
-    if (!locals.pb.authStore.isValid) {
-        redirect(303, '/login');
-    }
-
+export const load = async ({ params }) => {
     try {
         const article = await fetchArticle(getURL(params.fullarticle));
         const articleString = article.parr.join(' ');

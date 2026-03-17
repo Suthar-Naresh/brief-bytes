@@ -23,7 +23,6 @@
   "type": "module",
   "dependencies": {
     "cheerio": "^1.0.0",
-    "pocketbase": "^0.26.0",
     "textlens": "^1.0.0"
   }
 }
