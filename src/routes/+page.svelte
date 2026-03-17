@@ -8,37 +8,37 @@
 
 <main class="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 flex items-center justify-center relative overflow-hidden">
     <div class="absolute inset-0 opacity-20">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-indigo-500 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-blue-500 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 w-32 h-32 md:w-64 md:h-64 bg-purple-500 rounded-full blur-3xl"></div>
     </div>
 
-    <div class="relative z-10 text-center px-6 max-w-4xl">
-        <div class="mb-6">
-            <span class="inline-block px-4 py-1.5 text-sm font-medium text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full">
+    <div class="relative z-10 text-center px-4 md:px-6 max-w-4xl">
+        <div class="mb-4 md:mb-6">
+            <span class="inline-block px-3 md:px-4 py-1.5 text-xs md:text-sm font-medium text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full">
                 AI-Powered News Summarization
             </span>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
             Short on Time?
             <br />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Long on News!</span>
         </h1>
 
-        <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-base md:text-xl text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
             Get concise, machine-learning-powered summaries of the latest news. Stay informed without the overwhelm.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/news/main"
-                class="px-8 py-3.5 text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40"
+                class="px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40"
             >
                 Browse News
             </a>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+        <div class="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 text-left">
             <div class="p-6 rounded-xl bg-white/5 border border-white/10">
                 <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center mb-3">
                     <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

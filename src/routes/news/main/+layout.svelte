@@ -14,9 +14,9 @@
     ];
 
     const active =
-        "inline-block p-4 border-b-2 rounded-t-lg uppercase text-blue-600 border-blue-600 active dark:text-blue-500 dark:border-blue-500";
+        "inline-block px-3 py-3 md:p-4 border-b-2 rounded-t-lg uppercase text-blue-600 border-blue-600 active dark:text-blue-500 dark:border-blue-500 text-xs md:text-sm whitespace-nowrap";
     const nonactive =
-        "inline-block p-4 border-b-2 border-transparent rounded-t-lg uppercase hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300";
+        "inline-block px-3 py-3 md:p-4 border-b-2 border-transparent rounded-t-lg uppercase hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-xs md:text-sm whitespace-nowrap";
 </script>
 
 <svelte:head>
@@ -30,16 +30,18 @@
 <div
     class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 sticky top-0 bg-white z-10"
 >
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
-        <ul class="flex flex-wrap -mb-px">
-            <li class="mr-2">
-                <a href="/"
-                    class="inline-block p-4 border-b-2 border-transparent rounded-t-lg font-semibold text-gray-900 tracking-wider uppercase"
-                    >Brief Bytes</a
-                >
-            </li>
+    <div class="flex items-center max-w-7xl mx-auto px-2 md:px-4">
+        <a href="/"
+            class="hidden sm:inline-block p-4 border-b-2 border-transparent rounded-t-lg font-semibold text-gray-900 tracking-wider uppercase shrink-0"
+            >Brief Bytes</a
+        >
+        <a href="/"
+            class="sm:hidden inline-block p-3 border-b-2 border-transparent rounded-t-lg font-semibold text-gray-900 tracking-wider uppercase shrink-0 text-xs"
+            >BB</a
+        >
+        <ul class="flex overflow-x-auto -mb-px scrollbar-hide">
             {#each navLinks as nl}
-                <li class="mr-2">
+                <li class="shrink-0">
                     <a
                         href={nl.urlPath}
                         class={$page.url.pathname === nl.urlPath
@@ -53,8 +55,8 @@
 </div>
 
 {#if $navigating && $page.url.pathname.startsWith("/news/")}
-    <div class="grid grid-cols-2 gap-x-5 p-3 max-w-7xl mx-auto">
-        {#each Array(8) as _}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 p-3 max-w-7xl mx-auto">
+        {#each Array(6) as _}
             <SkeletonCard />
         {/each}
     </div>

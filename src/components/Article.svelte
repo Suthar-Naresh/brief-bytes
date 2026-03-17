@@ -19,12 +19,12 @@
 </script>
 
 <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto flex flex-col">
-        <div class="lg:w-4/6 mx-auto">
+    <div class="container px-4 md:px-5 py-8 md:py-24 mx-auto flex flex-col">
+        <div class="w-full lg:w-4/6 mx-auto">
             <button
                 onclick={() => history.back()}
                 type="button"
-                class="text-indigo-500 inline-flex items-center border border-indigo-500 px-3 py-2 rounded"
+                class="text-indigo-500 inline-flex items-center border border-indigo-500 px-3 py-2 rounded mb-4"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -42,28 +42,28 @@
                 </svg>
                 &nbsp;&nbsp; Back
             </button>
-            <h3 class="text-5xl font-bold text-gray-800">
+            <h3 class="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-800">
                 {data.article.title}
             </h3>
-            <h5 class="text-lg text-gray-600 font-semibold mt-6">
+            <h5 class="text-base md:text-lg text-gray-600 font-semibold mt-4 md:mt-6">
                 {data.article.subTitle}
             </h5>
 
-            <p class="text-sm text-gray-400 mt-2 mb-10">
+            <p class="text-sm text-gray-400 mt-2 mb-6 md:mb-10">
                 {data.article.pubDate}
             </p>
 
             <div class="rounded-lg overflow-hidden">
                 <img
                     alt="content"
-                    class="object-cover object-center h-full w-full"
+                    class="object-cover object-center w-full"
                     src={data.article.image}
                 />
             </div>
 
-            <div class="text-center sm:pr-8 sm:py-8 flex space-x-3">
+            <div class="sm:pr-8 sm:py-8 flex items-center space-x-3 py-4">
                 <div
-                    class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400"
+                    class="w-12 h-12 md:w-20 md:h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400 shrink-0"
                 >
                     <svg
                         fill="none"
@@ -71,39 +71,37 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        class="w-10 h-10"
+                        class="w-6 h-6 md:w-10 md:h-10"
                         viewBox="0 0 24 24"
                     >
                         <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                     </svg>
                 </div>
-                <div
-                    class="flex flex-col items-center text-center justify-center min-w-max"
-                >
-                    <h2
-                        class="uppercase font-medium title-font mt-4 text-gray-900 text-base"
-                    >
+                <div class="flex flex-col">
+                    <h2 class="uppercase font-medium title-font text-gray-900 text-sm md:text-base">
                         {data.article.author}
                     </h2>
-                    <div class="w-full h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                    <div class="w-full h-1 bg-indigo-500 rounded mt-1"></div>
                 </div>
             </div>
+
             <div
                 class="{(buttonState === 'idle' ||
                     buttonState === 'summarizing') &&
-                    'hidden'} border-dotted border-blue-400 border-2 p-2 rounded text-justify mb-4"
+                    'hidden'} border-dotted border-blue-400 border-2 p-3 rounded text-justify mb-4 text-sm md:text-base"
             >
                 {summarizedArticle}
             </div>
+
             <div
-                class="py-2 flex justify-between items-center border-spacing-6 border-dashed border-b-2 border-blue-500"
+                class="py-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-dashed border-b-2 border-blue-500"
             >
-                <div class="flex">
-                    <p class="font-semibold text-gray-800">
+                <div class="flex flex-wrap items-center">
+                    <p class="font-semibold text-gray-800 text-sm md:text-base">
                         Don't have time to read?
                     </p>
-                    <span>&nbsp;&nbsp;Summarize the article!</span>
+                    <span class="text-sm md:text-base">&nbsp;&nbsp;Summarize the article!</span>
                 </div>
                 <button
                     disabled={buttonState === "summarizing" ||
@@ -111,7 +109,7 @@
                     onclick={() => summarize()}
                     type="button"
                     class="{buttonState === 'summarized' &&
-                        'opacity-50 cursor-not-allowed'} text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                        'opacity-50 cursor-not-allowed'} text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center shrink-0 w-full sm:w-auto justify-center"
                 >
                     {#if buttonState === "summarizing"}
                         <svg
@@ -138,7 +136,7 @@
 
             <div class="mt-5 flex flex-col">
                 {#each data.article.parr as p}
-                    <p class="leading-relaxed text-base mb-4">
+                    <p class="leading-relaxed text-sm md:text-base mb-4">
                         {p}
                     </p>
                 {/each}
@@ -146,7 +144,7 @@
                 <a
                     target="_blank"
                     href={data.article.url}
-                    class="text-indigo-500 inline-flex items-center"
+                    class="text-indigo-500 inline-flex items-center text-sm md:text-base"
                     >Read Original Article
                     <svg
                         fill="none"

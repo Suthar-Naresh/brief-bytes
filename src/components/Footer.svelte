@@ -18,7 +18,7 @@
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BRIEF BYTES</span>
                 </a>
             </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div class="grid grid-cols-2 gap-8 sm:gap-6">
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Categories</h2>
                     <ul class="text-gray-600 dark:text-gray-400">
@@ -27,14 +27,6 @@
                                 <a href={nl.urlPath} class="hover:underline">{nl.title}</a>
                             </li>
                         {/each}
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
-                        <li class="mb-4"><span class="hover:underline cursor-pointer">Mail</span></li>
-                        <li class="mb-4"><span class="hover:underline cursor-pointer">LinkedIn</span></li>
-                        <li><span class="hover:underline cursor-pointer">Github</span></li>
                     </ul>
                 </div>
                 <div>

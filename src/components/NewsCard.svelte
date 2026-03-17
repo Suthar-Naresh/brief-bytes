@@ -4,27 +4,25 @@
     let { cardImg = "", articleLink = "", altText = "", cardHeading = "" } = $props();
 </script>
 
-<div class="flex border-b border-black p-5 space-x-4">
+<div class="flex border-b border-gray-200 p-4 md:p-5 space-x-3 md:space-x-4">
     {#if cardImg}
         <img
             src={cardImg}
             alt={altText || cardHeading}
-            class="aspect-square rounded h-fit"
+            class="w-20 h-20 md:w-24 md:h-24 object-cover rounded shrink-0"
         />
     {:else}
-        <span>
-            <div class="h-20 w-20 rounded bg-gray-200 flex justify-center items-center text-gray-400 font-semibold">
-                NEWS
-            </div>
-        </span>
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded bg-gray-200 flex justify-center items-center text-gray-400 font-semibold text-xs shrink-0">
+            NEWS
+        </div>
     {/if}
 
-    <div class="flex flex-col">
+    <div class="flex flex-col min-w-0">
         <a
             href="/news/fullnews/{prettyURL(articleLink)}"
-            class="hover:underline text-xl font-semibold line-clamp-3"
+            class="hover:underline text-base md:text-xl font-semibold line-clamp-3"
             >{cardHeading}</a
         >
-        <p class="text-xs line-clamp-2 text-gray-400">{altText ?? ""}</p>
+        <p class="text-xs line-clamp-2 text-gray-400 mt-1">{altText ?? ""}</p>
     </div>
 </div>
